@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "carryon",
+  "version": "${version}",
+  "name": "CarryOn",
+  "description": "Pick up and carry tile entities and living entities",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "minecraft": "1.6.4"
+  },
+  "icon": "assets/carryon/icon.png",
+  "authors": [
+    "Tschipp",
+    "Purplicious_Cow",
+    "Inf1nlty"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Inf1nlty/CarryOn-BTW",
+    "sources": "https://github.com/Inf1nlty/CarryOn-BTW"
+  },
+  "license": "LGPL-3.0",
+  "entrypoints": {
+    "main": [],
+    "btw:addon": [
+      "btw.community.carryon.CarryOnAddon"
+    ]
+  },
+  "custom": {
+    "btw:addon_prefix": "CO"
+  },
+  "mixins": [
+    "carryon.mixins.json"
+  ]
+}
