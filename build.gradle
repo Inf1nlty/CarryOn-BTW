@@ -34,6 +34,9 @@ repositories {
 }
 
 loom {
+    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+        runConfigs.named("client").get().getVmArgs().remove("-XstartOnFirstThread")
+    }
     setIntermediaryUrl('https://maven.legacyfabric.net/net/legacyfabric/intermediary/%1$s/intermediary-%1$s-v2.jar');
 //    accessWidenerPath = file('src/main/resources/carryon.accesswidener')
     addMinecraftJarProcessor(
@@ -105,6 +108,11 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}"}
     }
+}
+
+tasks.named('runClient', JavaExec).configure { exec ->
+    def user = project.hasProperty('username') ? project.username : 'Dev'
+    exec.setArgs(['--username', user, '--session', '0', '--width', '854', '--height', '480'])
 }
 
 loom {
